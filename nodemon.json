@@ -1,0 +1,8 @@
+{
+  "env": {
+    "FRONTEND_URL": "http://localhost:4200/",
+    "JWT_KEY": "welcome_mate_how_are_you_doing_HELP_Help_me_i_need_help",
+    "RESET_PASSWORD_KEY": "i_guess_it_is_time_to_resword_mortal",
+    "MONGO_URI": "mongodb//localhost:27017/satisfactoria"
+  }
+}
