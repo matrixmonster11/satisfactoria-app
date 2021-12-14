@@ -7,6 +7,6 @@ router.post("/sign-up", userController.createUser);
 
 router.post("/login", userController.userLogin);
 
-router.get("/", checkAuth, userController.getUsers);
+//router.get("/", checkAuth, userController.getUsers);
 
 module.exports = router;
