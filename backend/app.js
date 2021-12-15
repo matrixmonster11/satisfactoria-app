@@ -2,9 +2,8 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   mongoose = require("mongoose"),
   userRoutes = require("./routes/user"),
-  cors = require("cors"),
-  path = require("path"),
-  app = express();
+  partnerRoutes = require("./routes/partner");
+(cors = require("cors")), (path = require("path")), (app = express());
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -50,5 +49,6 @@ app.get("/testing", (req, res, next) => {
 });
 
 app.use("/user", userRoutes);
+app.use("/partners", partnerRoutes);
 
 module.exports = app;
