@@ -10,7 +10,7 @@ module.exports = (request, reply, next) => {
       userType: decodedToken.userType,
       partnerId: decodedToken.partnerId,
     };
-    done();
+    next();
   } catch (error) {
     reply.status(401).send({
       message: "You are not authenticated!",
