@@ -1,4 +1,4 @@
-const Partner = require("../../models/engin/Partner"),
+const Partner = require("../models/Partner"),
   { nanoid } = require("nanoid");
 
 module.exports = {
