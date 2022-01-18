@@ -1,4 +1,4 @@
-const multer = require("fastify-multer");
+const multer = require("multer");
 
 const MIME_TYPE_MAP = {
   "image/png": "png",

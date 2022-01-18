@@ -34,15 +34,14 @@ module.exports = async function buildApp() {
     );
     next();
   });
-  // mongoPsw: jupx2zt0MiXyMTni;
 
-  app.get("/", (req, res, next) => {
-    res.send("Hello World");
-  });
+  // app.get("/", (req, res, next) => {
+  //   res.send("Hello World");
+  // });
 
-  app.get("/testing", (req, res, next) => {
-    res.send("Just testing this mate");
-  });
+  // app.get("/testing", (req, res, next) => {
+  //   res.send("Just testing this mate");
+  // });
 
   app.use("/user", userRoutes);
   app.use("/partners", partnerRoutes);

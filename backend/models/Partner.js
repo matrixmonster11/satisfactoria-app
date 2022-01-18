@@ -4,6 +4,8 @@ const mongoose = require("mongoose"),
     nom: { type: String },
     address: { type: String },
     phone: { type: String },
+    city: { type: String },
+    userRoutes: [{ userType: String, routes: [String] }],
   });
 
 module.exports = mongoose.model("Partner", partnerSchema);

@@ -10,6 +10,8 @@ module.exports = {
       name: request.body.name,
       address: request.body.address,
       phone: request.body.phone,
+      city: request.body.city,
+      userRoutes: request.body.userRoutes,
     });
     console.log("Added partner ", partner);
     partner
@@ -28,37 +30,12 @@ module.exports = {
 
   getPartners: (request, reply) => {
     let partnerQuery;
-    let pageSize = +request.query.size;
-    let currentPage = +request.query.page;
-    let sort = request.query.sort || "name";
-    let order = request.query.order || "asc";
-    let search = request.query.search;
-
-    partnerQuery = Partner.find(
-      search != ""
-        ? { name: { $regex: search ? search : "", $options: "i" } }
-        : {}
-    ).lean();
-
-    console.log("query :", request.query);
-    if (sort == "name") {
-      partnerQuery.sort({ name: order });
-    }
-
-    partnerQuery.skip(pageSize * currentPage).limit(pageSize);
-
-    // return is optional, as this is the latest statement so it will returned automatically
     partnerQuery
       .then((documents) => {
         reply.status(200).json({
           message: "Partners fetched succesfully!",
           partners: documents,
           maxPartners: documents.length,
-          pagination: {
-            page: currentPage,
-            size: pageSize,
-            length: documents.length,
-          },
         });
       })
       .catch((error) => {
@@ -81,11 +58,11 @@ module.exports = {
 
   updatePartner: (request, reply) => {
     const partner = new Partner({
-      _id: request.body.id,
       name: request.body.name,
-      cities: request.body.cities,
-      serviceIds: request.body.services,
-      tags: request.body.tags,
+      address: request.body.address,
+      phone: request.body.phone,
+      city: request.body.city,
+      userRoutes: request.body.userRoutes,
     });
     console.log("UPDATE PARTNER !!!!!!!!");
     Partner.updateOne({ _id: request.params.id }, partner)
@@ -102,7 +79,7 @@ module.exports = {
       });
   },
   getPartner: (request, reply) => {
-    Partner.findById(request.params.id)
+    Partner.findOne({ _id: request.params.id })
       .then((partner) => {
         if (partner) {
           console.log("get partner :", partner);
