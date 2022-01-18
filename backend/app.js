@@ -4,6 +4,7 @@ const express = require("express"),
   userRoutes = require("./routes/user"),
   partnerRoutes = require("./routes/partner"),
   trackRoutes = require("./routes/track"),
+  caseRoutes = require("./routes/case"),
   cors = require("cors"),
   path = require("path"),
   app = express();
@@ -46,6 +47,7 @@ module.exports = async function buildApp() {
   app.use("/user", userRoutes);
   app.use("/partners", partnerRoutes);
   app.use("/tracks", trackRoutes);
+  app.use("/cases", caseRoutes);
 
   return app;
 };

@@ -8,6 +8,7 @@ const User = require("../models/User"),
 
 module.exports = {
   createUser: async (req, res, next) => {
+    console.log("CREATE USER!!");
     bcrypt.hash(req.body.password, 10).then((hash) => {
       const user = new User({
         _id: nanoid(12),
@@ -34,7 +35,7 @@ module.exports = {
   },
   userLogin: async (req, res, next) => {
     let fetchedUser;
-
+    console.log("USER LOGIN!!");
     User.findOne({ email: req.body.email })
       .lean()
       .then((user) => {
@@ -73,6 +74,7 @@ module.exports = {
         userName = result.name;
         userType = result.userType;
         return res.status(200).send({
+          userId: result._id,
           token: token,
           expiresIn: 7200,
           userType: userType,
